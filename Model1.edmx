@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище UchTechModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Komplektsh">
+          <Key>
+            <PropertyRef Name="id_kompl" />
+          </Key>
+          <Property Name="id_kompl" Type="int" Nullable="false" />
+          <Property Name="name_komplekt" Type="varchar" MaxLength="100" />
+          <Property Name="type_komplekt" Type="int" Nullable="false" />
+          <Property Name="characterist" Type="varchar" MaxLength="150" />
+          <Property Name="id_status" Type="int" Nullable="false" />
+          <Property Name="id_pc" Type="int" />
+        </EntityType>
+        <EntityType Name="Sotrud">
+          <Key>
+            <PropertyRef Name="id_sotr" />
+          </Key>
+          <Property Name="id_sotr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIO" Type="varchar" MaxLength="30" />
+          <Property Name="dolzh" Type="varchar" MaxLength="30" />
+          <Property Name="phone" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="id_status" />
+          </Key>
+          <Property Name="id_status" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Technika">
+          <Key>
+            <PropertyRef Name="id_techn" />
+          </Key>
+          <Property Name="id_techn" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="characterstc" Type="varchar" MaxLength="100" />
+          <Property Name="id_type_techn" Type="int" Nullable="false" />
+          <Property Name="id_sotrud" Type="int" />
+          <Property Name="id_status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Type_Komplekt">
+          <Key>
+            <PropertyRef Name="id_type_komplekt" />
+          </Key>
+          <Property Name="id_type_komplekt" Type="int" Nullable="false" />
+          <Property Name="name_type" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Type_Techn">
+          <Key>
+            <PropertyRef Name="id_type_techn" />
+          </Key>
+          <Property Name="id_type_techn" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_type" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK_Komplektsh_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Komplektsh" Type="Self.Komplektsh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="id_status" />
+            </Principal>
+            <Dependent Role="Komplektsh">
+              <PropertyRef Name="id_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Komplektsh_Technika">
+          <End Role="Technika" Type="Self.Technika" Multiplicity="0..1" />
+          <End Role="Komplektsh" Type="Self.Komplektsh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Technika">
+              <PropertyRef Name="id_techn" />
+            </Principal>
+            <Dependent Role="Komplektsh">
+              <PropertyRef Name="id_pc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Komplektsh_Type_Komplekt">
+          <End Role="Type_Komplekt" Type="Self.Type_Komplekt" Multiplicity="1" />
+          <End Role="Komplektsh" Type="Self.Komplektsh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_Komplekt">
+              <PropertyRef Name="id_type_komplekt" />
+            </Principal>
+            <Dependent Role="Komplektsh">
+              <PropertyRef Name="type_komplekt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Technika_Sotrud">
+          <End Role="Sotrud" Type="Self.Sotrud" Multiplicity="1" />
+          <End Role="Technika" Type="Self.Technika" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrud">
+              <PropertyRef Name="id_sotr" />
+            </Principal>
+            <Dependent Role="Technika">
+              <PropertyRef Name="id_techn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Technika_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Technika" Type="Self.Technika" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="id_status" />
+            </Principal>
+            <Dependent Role="Technika">
+              <PropertyRef Name="id_techn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Technika_Type_Techn">
+          <End Role="Type_Techn" Type="Self.Type_Techn" Multiplicity="1" />
+          <End Role="Technika" Type="Self.Technika" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_Techn">
+              <PropertyRef Name="id_type_techn" />
+            </Principal>
+            <Dependent Role="Technika">
+              <PropertyRef Name="id_type_techn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище UchTechModelContainer">
+          <EntitySet Name="Komplektsh" EntityType="Self.Komplektsh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sotrud" EntityType="Self.Sotrud" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Technika" EntityType="Self.Technika" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type_Komplekt" EntityType="Self.Type_Komplekt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type_Techn" EntityType="Self.Type_Techn" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Komplektsh_Status" Association="Self.FK_Komplektsh_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Komplektsh" EntitySet="Komplektsh" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Komplektsh_Technika" Association="Self.FK_Komplektsh_Technika">
+            <End Role="Technika" EntitySet="Technika" />
+            <End Role="Komplektsh" EntitySet="Komplektsh" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Komplektsh_Type_Komplekt" Association="Self.FK_Komplektsh_Type_Komplekt">
+            <End Role="Type_Komplekt" EntitySet="Type_Komplekt" />
+            <End Role="Komplektsh" EntitySet="Komplektsh" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Technika_Sotrud" Association="Self.FK_Technika_Sotrud">
+            <End Role="Sotrud" EntitySet="Sotrud" />
+            <End Role="Technika" EntitySet="Technika" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Technika_Status" Association="Self.FK_Technika_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Technika" EntitySet="Technika" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Technika_Type_Techn" Association="Self.FK_Technika_Type_Techn">
+            <End Role="Type_Techn" EntitySet="Type_Techn" />
+            <End Role="Technika" EntitySet="Technika" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UchTechModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Komplektsh">
+          <Key>
+            <PropertyRef Name="id_kompl" />
+          </Key>
+          <Property Name="id_kompl" Type="Int32" Nullable="false" />
+          <Property Name="name_komplekt" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="type_komplekt" Type="Int32" Nullable="false" />
+          <Property Name="characterist" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="id_status" Type="Int32" Nullable="false" />
+          <Property Name="id_pc" Type="Int32" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_Komplektsh_Status" FromRole="Komplektsh" ToRole="Status" />
+          <NavigationProperty Name="Technika" Relationship="Self.FK_Komplektsh_Technika" FromRole="Komplektsh" ToRole="Technika" />
+          <NavigationProperty Name="Status1" Relationship="UchTechModel.FK_Komplektsh_Status1" FromRole="Komplektsh" ToRole="Status" />
+          <NavigationProperty Name="Technika1" Relationship="UchTechModel.FK_Komplektsh_Technika1" FromRole="Komplektsh" ToRole="Technika" />
+          <NavigationProperty Name="Type_Komplekt1" Relationship="UchTechModel.FK_Komplektsh_Type_Komplekt" FromRole="Komplektsh" ToRole="Type_Komplekt" />
+        </EntityType>
+        <EntityType Name="Sotrud">
+          <Key>
+            <PropertyRef Name="id_sotr" />
+          </Key>
+          <Property Name="id_sotr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="dolzh" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Technika" Relationship="Self.FK_Technika_Sotrud" FromRole="Sotrud" ToRole="Technika" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="id_status" />
+          </Key>
+          <Property Name="id_status" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Komplektsh" Relationship="Self.FK_Komplektsh_Status" FromRole="Status" ToRole="Komplektsh" />
+          <NavigationProperty Name="Komplektsh1" Relationship="UchTechModel.FK_Komplektsh_Status1" FromRole="Status" ToRole="Komplektsh" />
+          <NavigationProperty Name="Technika" Relationship="UchTechModel.FK_Technika_Status" FromRole="Status" ToRole="Technika" />
+        </EntityType>
+        <EntityType Name="Technika">
+          <Key>
+            <PropertyRef Name="id_techn" />
+          </Key>
+          <Property Name="id_techn" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="characterstc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="id_type_techn" Type="Int32" Nullable="false" />
+          <Property Name="id_sotrud" Type="Int32" />
+          <NavigationProperty Name="Komplektsh" Relationship="Self.FK_Komplektsh_Technika" FromRole="Technika" ToRole="Komplektsh" />
+          <NavigationProperty Name="Sotrud" Relationship="Self.FK_Technika_Sotrud" FromRole="Technika" ToRole="Sotrud" />
+          <NavigationProperty Name="Type_Techn" Relationship="Self.FK_Technika_Type_Techn" FromRole="Technika" ToRole="Type_Techn" />
+          <NavigationProperty Name="Komplektsh1" Relationship="UchTechModel.FK_Komplektsh_Technika1" FromRole="Technika" ToRole="Komplektsh" />
+          <Property Name="id_status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Status" Relationship="UchTechModel.FK_Technika_Status" FromRole="Technika" ToRole="Status" />
+        </EntityType>
+        <EntityType Name="Type_Techn">
+          <Key>
+            <PropertyRef Name="id_type_techn" />
+          </Key>
+          <Property Name="id_type_techn" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Technika" Relationship="Self.FK_Technika_Type_Techn" FromRole="Type_Techn" ToRole="Technika" />
+        </EntityType>
+        <EntityType Name="Type_Komplekt">
+          <Key>
+            <PropertyRef Name="id_type_komplekt" />
+          </Key>
+          <Property Name="id_type_komplekt" Type="Int32" Nullable="false" />
+          <Property Name="name_type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Komplektsh" Relationship="UchTechModel.FK_Komplektsh_Type_Komplekt" FromRole="Type_Komplekt" ToRole="Komplektsh" />
+        </EntityType>
+        <Association Name="FK_Komplektsh_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Komplektsh" Type="Self.Komplektsh" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="id_status" />
+            </Principal>
+            <Dependent Role="Komplektsh">
+              <PropertyRef Name="id_kompl" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Komplektsh_Technika">
+          <End Role="Technika" Type="Self.Technika" Multiplicity="1" />
+          <End Role="Komplektsh" Type="Self.Komplektsh" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Technika">
+              <PropertyRef Name="id_techn" />
+            </Principal>
+            <Dependent Role="Komplektsh">
+              <PropertyRef Name="id_kompl" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Technika_Sotrud">
+          <End Role="Sotrud" Type="Self.Sotrud" Multiplicity="1" />
+          <End Role="Technika" Type="Self.Technika" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrud">
+              <PropertyRef Name="id_sotr" />
+            </Principal>
+            <Dependent Role="Technika">
+              <PropertyRef Name="id_techn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Technika_Type_Techn">
+          <End Role="Type_Techn" Type="Self.Type_Techn" Multiplicity="1" />
+          <End Role="Technika" Type="Self.Technika" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_Techn">
+              <PropertyRef Name="id_type_techn" />
+            </Principal>
+            <Dependent Role="Technika">
+              <PropertyRef Name="id_type_techn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UchTechEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Komplektsh" EntityType="Self.Komplektsh" />
+          <EntitySet Name="Sotrud" EntityType="Self.Sotrud" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="Technika" EntityType="Self.Technika" />
+          <EntitySet Name="Type_Techn" EntityType="Self.Type_Techn" />
+          <EntitySet Name="Type_Komplekt" EntityType="Self.Type_Komplekt" />
+          <AssociationSet Name="FK_Komplektsh_Status" Association="Self.FK_Komplektsh_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Komplektsh" EntitySet="Komplektsh" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Komplektsh_Technika" Association="Self.FK_Komplektsh_Technika">
+            <End Role="Technika" EntitySet="Technika" />
+            <End Role="Komplektsh" EntitySet="Komplektsh" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Technika_Sotrud" Association="Self.FK_Technika_Sotrud">
+            <End Role="Sotrud" EntitySet="Sotrud" />
+            <End Role="Technika" EntitySet="Technika" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Technika_Type_Techn" Association="Self.FK_Technika_Type_Techn">
+            <End Role="Type_Techn" EntitySet="Type_Techn" />
+            <End Role="Technika" EntitySet="Technika" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Komplektsh_Status1" Association="UchTechModel.FK_Komplektsh_Status1">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Komplektsh" EntitySet="Komplektsh" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Komplektsh_Technika1" Association="UchTechModel.FK_Komplektsh_Technika1">
+            <End Role="Technika" EntitySet="Technika" />
+            <End Role="Komplektsh" EntitySet="Komplektsh" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Komplektsh_Type_Komplekt" Association="UchTechModel.FK_Komplektsh_Type_Komplekt">
+            <End Role="Type_Komplekt" EntitySet="Type_Komplekt" />
+            <End Role="Komplektsh" EntitySet="Komplektsh" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Technika_Status" Association="UchTechModel.FK_Technika_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Technika" EntitySet="Technika" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_Komplektsh_Status1">
+          <End Type="UchTechModel.Status" Role="Status" Multiplicity="1" />
+          <End Type="UchTechModel.Komplektsh" Role="Komplektsh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="id_status" />
+            </Principal>
+            <Dependent Role="Komplektsh">
+              <PropertyRef Name="id_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Komplektsh_Technika1">
+          <End Type="UchTechModel.Technika" Role="Technika" Multiplicity="0..1" />
+          <End Type="UchTechModel.Komplektsh" Role="Komplektsh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Technika">
+              <PropertyRef Name="id_techn" />
+            </Principal>
+            <Dependent Role="Komplektsh">
+              <PropertyRef Name="id_pc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Komplektsh_Type_Komplekt">
+          <End Type="UchTechModel.Type_Komplekt" Role="Type_Komplekt" Multiplicity="1" />
+          <End Type="UchTechModel.Komplektsh" Role="Komplektsh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_Komplekt">
+              <PropertyRef Name="id_type_komplekt" />
+            </Principal>
+            <Dependent Role="Komplektsh">
+              <PropertyRef Name="type_komplekt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Technika_Status">
+          <End Type="UchTechModel.Status" Role="Status" Multiplicity="1" />
+          <End Type="UchTechModel.Technika" Role="Technika" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="id_status" />
+            </Principal>
+            <Dependent Role="Technika">
+              <PropertyRef Name="id_techn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище UchTechModelContainer" CdmEntityContainer="UchTechEntities">
+          <EntitySetMapping Name="Komplektsh">
+            <EntityTypeMapping TypeName="UchTechModel.Komplektsh">
+              <MappingFragment StoreEntitySet="Komplektsh">
+                <ScalarProperty Name="id_kompl" ColumnName="id_kompl" />
+                <ScalarProperty Name="name_komplekt" ColumnName="name_komplekt" />
+                <ScalarProperty Name="type_komplekt" ColumnName="type_komplekt" />
+                <ScalarProperty Name="characterist" ColumnName="characterist" />
+                <ScalarProperty Name="id_status" ColumnName="id_status" />
+                <ScalarProperty Name="id_pc" ColumnName="id_pc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sotrud">
+            <EntityTypeMapping TypeName="UchTechModel.Sotrud">
+              <MappingFragment StoreEntitySet="Sotrud">
+                <ScalarProperty Name="id_sotr" ColumnName="id_sotr" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="dolzh" ColumnName="dolzh" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="UchTechModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="id_status" ColumnName="id_status" />
+                <ScalarProperty Name="status1" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Technika">
+            <EntityTypeMapping TypeName="UchTechModel.Technika">
+              <MappingFragment StoreEntitySet="Technika">
+                <ScalarProperty Name="id_status" ColumnName="id_status" />
+                <ScalarProperty Name="id_techn" ColumnName="id_techn" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="characterstc" ColumnName="characterstc" />
+                <ScalarProperty Name="id_type_techn" ColumnName="id_type_techn" />
+                <ScalarProperty Name="id_sotrud" ColumnName="id_sotrud" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type_Techn">
+            <EntityTypeMapping TypeName="UchTechModel.Type_Techn">
+              <MappingFragment StoreEntitySet="Type_Techn">
+                <ScalarProperty Name="id_type_techn" ColumnName="id_type_techn" />
+                <ScalarProperty Name="name_type" ColumnName="name_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type_Komplekt">
+            <EntityTypeMapping TypeName="UchTechModel.Type_Komplekt">
+              <MappingFragment StoreEntitySet="Type_Komplekt">
+                <ScalarProperty Name="id_type_komplekt" ColumnName="id_type_komplekt" />
+                <ScalarProperty Name="name_type" ColumnName="name_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="af02374f7d1d4a81a94ab2ff873a0c0f" Name="Diagram1">
+        <EntityTypeShape EntityType="UchTechModel.Komplektsh" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="UchTechModel.Sotrud" Width="1.5" PointX="1.5" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UchTechModel.Status" Width="1.5" PointX="0.5" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="UchTechModel.Technika" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UchTechModel.Type_Techn" Width="1.5" PointX="1.5" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UchTechModel.Type_Komplekt" Width="1.5" PointX="4.75" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="UchTechModel.FK_Komplektsh_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="UchTechModel.FK_Komplektsh_Technika" ManuallyRouted="false" />
+        <AssociationConnector Association="UchTechModel.FK_Technika_Sotrud" ManuallyRouted="false" />
+        <AssociationConnector Association="UchTechModel.FK_Technika_Type_Techn" ManuallyRouted="false" />
+        <AssociationConnector Association="UchTechModel.FK_Komplektsh_Status1" />
+        <AssociationConnector Association="UchTechModel.FK_Komplektsh_Technika1" />
+        <AssociationConnector Association="UchTechModel.FK_Komplektsh_Type_Komplekt" />
+        <AssociationConnector Association="UchTechModel.FK_Technika_Status" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
