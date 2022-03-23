@@ -5,46 +5,60 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kursprj2"
         mc:Ignorable="d"
-        Title="Учёт техники" Height="999" Width="800">
-    <TabControl HorizontalAlignment="Left" Height="968" VerticalAlignment="Top" Width="790">
-        <TabItem Header="TabItem">
-            <Grid Background="#FFE5E5E5">
-                <Grid Margin="0,0,-18,-28">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="8*"/>
-                        <ColumnDefinition Width="83*"/>
-                        <ColumnDefinition Width="76*"/>
-                        <ColumnDefinition Width="65*"/>
-                        <ColumnDefinition Width="76*"/>
-                        <ColumnDefinition Width="51*"/>
-                        <ColumnDefinition Width="76*"/>
-                        <ColumnDefinition Width="56*"/>
-                        <ColumnDefinition Width="76*"/>
-                        <ColumnDefinition Width="54*"/>
-                        <ColumnDefinition Width="76*"/>
-                        <ColumnDefinition Width="87*"/>
-                        <ColumnDefinition Width="13*"/>
-                    </Grid.ColumnDefinitions>
+        Title="Учёт техники" Height="700" Width="800">
+    <Grid Margin="0,0,2,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="789*"/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5" Margin="0,0,-4,0">
                     <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition Height="209*"/>
-                        <RowDefinition Height="123*"/>
-                        <RowDefinition Height="14*"/>
-                        <RowDefinition Height="137*"/>
+                        <RowDefinition Height="0*"/>
+                        <RowDefinition Height="8*"/>
+                        <RowDefinition Height="218*"/>
+                        <RowDefinition Height="166*"/>
+                        <RowDefinition Height="29*"/>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="203*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="0*"/>
                     </Grid.RowDefinitions>
-                    <DataGrid Margin="2,1,10,0" Grid.ColumnSpan="11" Grid.Column="1" Grid.Row="1"/>
-                    <Button Content="Button" Grid.Row="3" Grid.Column="2"/>
-                    <Button Content="Button" Grid.Row="3" Grid.Column="4"/>
-                    <Button Content="Button" Grid.Row="3" Grid.Column="6"/>
-                    <Button Content="Button" Grid.Row="3" Grid.Column="8"/>
-                    <Button Content="Button" Grid.Row="3" Grid.Column="10"/>
-                    <DataGrid Grid.ColumnSpan="11" Grid.Column="1" Grid.Row="4" Margin="10,10,10,32"/>
-
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0*"/>
+                        <ColumnDefinition Width="95*"/>
+                        <ColumnDefinition Width="78*"/>
+                        <ColumnDefinition Width="64*"/>
+                        <ColumnDefinition Width="78*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="76*"/>
+                        <ColumnDefinition Width="58*"/>
+                        <ColumnDefinition Width="78*"/>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="78*"/>
+                        <ColumnDefinition Width="93*"/>
+                        <ColumnDefinition Width="0*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="TechGrid" Margin="8,0" Grid.ColumnSpan="12" Grid.Row="2"/>
+                    <Button Content="Button" Grid.Row="4" Grid.Column="2"/>
+                    <Button Content="Button" Margin="0,0,1,0" Grid.Row="4" Grid.Column="4"/>
+                    <Button Content="Button" Margin="0,0,5,0" Grid.Row="4" Grid.Column="6"/>
+                    <Button Content="Button" Grid.Row="4" Grid.Column="8"/>
+                    <Button Content="Button" Grid.Row="4" Grid.Column="10"/>
+                    <DataGrid Margin="18,10,6,10" Grid.ColumnSpan="12" Grid.Row="6"/>
                 </Grid>
-            </Grid>
-        </TabItem>
-        <TabItem Header="TabItem">
-            <Grid Background="#FFE5E5E5" Margin="0,2,0,-2"/>
-        </TabItem>
-    </TabControl>
+            </TabItem>
+            <TabItem/>
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5" Margin="0,2,0,-2"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
 </Window>

@@ -20,6 +20,12 @@ namespace Kursprj2
     /// </summary>
     public partial class MainWindow : Window
     {
+        public void TechPages()
+        {
+            InitializeComponent();
+            TechGrid.ItemsSource = UchTechEntities.GetContext().Technika.ToList();
+        }
+
         public MainWindow()
         {
             InitializeComponent();
