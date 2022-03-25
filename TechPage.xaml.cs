@@ -16,15 +16,14 @@ using System.Windows.Shapes;
 namespace Kursprj2
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для TechPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class TechPage : Page
     {
-
-        public MainWindow()
+        public TechPage()
         {
             InitializeComponent();
-            
+            TechGrid.ItemsSource = UchTechEntities.GetContext().Technika.ToList();
         }
     }
 }
