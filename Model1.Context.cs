@@ -15,11 +15,18 @@ namespace Kursprj2
     
     public partial class UchTechEntities : DbContext
     {
+        private static UchTechEntities _context;
+
         public UchTechEntities()
             : base("name=UchTechEntities")
         {
         }
-    
+        public static UchTechEntities GetContext()
+        {
+            if (_context == null)
+                _context = new UchTechEntities();
+            return _context;
+        }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

@@ -24,7 +24,19 @@ namespace Kursprj2
         public MainWindow()
         {
             InitializeComponent();
+            FrameNav.MF_EX = MainFrame;
+            FrameNav.MF_EX.Navigate(new TechPage());
             
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            FrameNav.MF_EX.Navigate(new TechPage());
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            FrameNav.MF_EX.Navigate(new SotrPage());
         }
     }
 }
