@@ -64,15 +64,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddKompl.xaml.cs">
+      <DependentUpon>AddKompl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddSotr.xaml.cs">
+      <DependentUpon>AddSotr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddTech.xaml.cs">
+      <DependentUpon>AddTech.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FrameNav.cs" />
     <Compile Include="Komplektsh.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KomplektsPage.xaml.cs">
+      <DependentUpon>KomplektsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KomplQueryPage.xaml.cs">
+      <DependentUpon>KomplQueryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Queres.cs" />
     <Compile Include="SotrPage.xaml.cs">
       <DependentUpon>SotrPage.xaml</DependentUpon>
     </Compile>
@@ -94,6 +110,26 @@
     <Compile Include="Type_Techn.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="AddKompl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddSotr.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddTech.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KomplektsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KomplQueryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

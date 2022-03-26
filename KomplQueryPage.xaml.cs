@@ -16,23 +16,22 @@ using System.Windows.Shapes;
 namespace Kursprj2
 {
     /// <summary>
-    /// Логика взаимодействия для SotrPage.xaml
+    /// Логика взаимодействия для KomplQueryPage.xaml
     /// </summary>
-    public partial class SotrPage : Page
+    public partial class KomplQueryPage : Page
     {
-        public SotrPage()
+        public KomplQueryPage(string dateq)
         {
             InitializeComponent();
-            SotrGrid.ItemsSource = UchTechEntities.GetContext().Sotrud.ToList();
+            Queres query = new Queres();
+            query.Table_Query(dateq, KomplektQueryGrid);
+            
         }
 
-        private void AddButtSotr_Click(object sender, RoutedEventArgs e)
+        private void ButBack_Click(object sender, RoutedEventArgs e)
         {
-            FrameNav.MF_EX.Navigate(new AddSotr(null));
-        }
-        private void EditButtSotr_Click(object sender, RoutedEventArgs e)
-        {
-            FrameNav.MF_EX.Navigate(new AddSotr((sender as Button).DataContext as Sotrud));
+            FrameNav.MF_EX.GoBack();
+
         }
     }
 }

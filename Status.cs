@@ -18,14 +18,15 @@ namespace Kursprj2
         public Status()
         {
             this.Komplektsh1 = new HashSet<Komplektsh>();
+            this.Technika1 = new HashSet<Technika>();
         }
     
         public int id_status { get; set; }
         public string status1 { get; set; }
     
-        public virtual Komplektsh Komplektsh { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Komplektsh> Komplektsh1 { get; set; }
-        public virtual Technika Technika { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Technika> Technika1 { get; set; }
     }
 }

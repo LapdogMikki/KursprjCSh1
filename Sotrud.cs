@@ -14,11 +14,18 @@ namespace Kursprj2
     
     public partial class Sotrud
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Sotrud()
+        {
+            this.Technika1 = new HashSet<Technika>();
+        }
+    
         public int id_sotr { get; set; }
         public string FIO { get; set; }
         public string dolzh { get; set; }
         public string phone { get; set; }
     
-        public virtual Technika Technika { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Technika> Technika1 { get; set; }
     }
 }

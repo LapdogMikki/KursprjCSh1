@@ -24,6 +24,33 @@ namespace Kursprj2
         {
             InitializeComponent();
             TechGrid.ItemsSource = UchTechEntities.GetContext().Technika.ToList();
+            QueryButton.Visibility = Visibility.Hidden;
+        }
+
+        private void QueryButton_Click(object sender, RoutedEventArgs e)
+        {
+            var cl1 = TechGrid.SelectedCells[1];
+            string tp = cl1.Column.GetCellContent(cl1.Item).ToString();
+            FrameNav.MF_EX.Navigate(new KomplQueryPage(tp));
+        }
+
+        private void TechGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var cl1 = TechGrid.SelectedCells[1];
+            string tp = cl1.Column.GetCellContent(cl1.Item).ToString();
+            if (tp == "Компьютер")
+                QueryButton.Visibility = Visibility.Visible;
+            else QueryButton.Visibility = Visibility.Hidden;
+            
+        }
+
+        private void AddButtTech_Click(object sender, RoutedEventArgs e)
+        {
+            FrameNav.MF_EX.Navigate(new AddTech(null));
+        }
+        private void EditButtTech_Click(object sender, RoutedEventArgs e)
+        {
+            FrameNav.MF_EX.Navigate(new AddTech((sender as Button).DataContext as Technika));
         }
     }
 }

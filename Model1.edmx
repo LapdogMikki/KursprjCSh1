@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="id_kompl" />
           </Key>
-          <Property Name="id_kompl" Type="int" Nullable="false" />
+          <Property Name="id_kompl" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name_komplekt" Type="varchar" MaxLength="100" />
           <Property Name="type_komplekt" Type="int" Nullable="false" />
           <Property Name="characterist" Type="varchar" MaxLength="150" />
@@ -47,8 +47,8 @@
           <Key>
             <PropertyRef Name="id_type_komplekt" />
           </Key>
-          <Property Name="id_type_komplekt" Type="int" Nullable="false" />
-          <Property Name="name_type" Type="varchar" MaxLength="30" />
+          <Property Name="id_type_komplekt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_type" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Type_Techn">
           <Key>
@@ -94,26 +94,26 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Technika_Sotrud">
-          <End Role="Sotrud" Type="Self.Sotrud" Multiplicity="1" />
-          <End Role="Technika" Type="Self.Technika" Multiplicity="0..1" />
+          <End Role="Sotrud" Type="Self.Sotrud" Multiplicity="0..1" />
+          <End Role="Technika" Type="Self.Technika" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sotrud">
               <PropertyRef Name="id_sotr" />
             </Principal>
             <Dependent Role="Technika">
-              <PropertyRef Name="id_techn" />
+              <PropertyRef Name="id_sotrud" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Technika_Status">
           <End Role="Status" Type="Self.Status" Multiplicity="1" />
-          <End Role="Technika" Type="Self.Technika" Multiplicity="0..1" />
+          <End Role="Technika" Type="Self.Technika" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Status">
               <PropertyRef Name="id_status" />
             </Principal>
             <Dependent Role="Technika">
-              <PropertyRef Name="id_techn" />
+              <PropertyRef Name="id_status" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -175,8 +175,6 @@
           <Property Name="characterist" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="id_status" Type="Int32" Nullable="false" />
           <Property Name="id_pc" Type="Int32" />
-          <NavigationProperty Name="Status" Relationship="Self.FK_Komplektsh_Status" FromRole="Komplektsh" ToRole="Status" />
-          <NavigationProperty Name="Technika" Relationship="Self.FK_Komplektsh_Technika" FromRole="Komplektsh" ToRole="Technika" />
           <NavigationProperty Name="Status1" Relationship="UchTechModel.FK_Komplektsh_Status1" FromRole="Komplektsh" ToRole="Status" />
           <NavigationProperty Name="Technika1" Relationship="UchTechModel.FK_Komplektsh_Technika1" FromRole="Komplektsh" ToRole="Technika" />
           <NavigationProperty Name="Type_Komplekt1" Relationship="UchTechModel.FK_Komplektsh_Type_Komplekt" FromRole="Komplektsh" ToRole="Type_Komplekt" />
@@ -189,7 +187,7 @@
           <Property Name="FIO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="dolzh" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Technika" Relationship="Self.FK_Technika_Sotrud" FromRole="Sotrud" ToRole="Technika" />
+          <NavigationProperty Name="Technika1" Relationship="UchTechModel.FK_Technika_Sotrud1" FromRole="Sotrud" ToRole="Technika" />
         </EntityType>
         <EntityType Name="Status">
           <Key>
@@ -197,9 +195,8 @@
           </Key>
           <Property Name="id_status" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="status1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Komplektsh" Relationship="Self.FK_Komplektsh_Status" FromRole="Status" ToRole="Komplektsh" />
           <NavigationProperty Name="Komplektsh1" Relationship="UchTechModel.FK_Komplektsh_Status1" FromRole="Status" ToRole="Komplektsh" />
-          <NavigationProperty Name="Technika" Relationship="UchTechModel.FK_Technika_Status" FromRole="Status" ToRole="Technika" />
+          <NavigationProperty Name="Technika1" Relationship="UchTechModel.FK_Technika_Status1" FromRole="Status" ToRole="Technika" />
         </EntityType>
         <EntityType Name="Technika">
           <Key>
@@ -210,12 +207,11 @@
           <Property Name="characterstc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="id_type_techn" Type="Int32" Nullable="false" />
           <Property Name="id_sotrud" Type="Int32" />
-          <NavigationProperty Name="Komplektsh" Relationship="Self.FK_Komplektsh_Technika" FromRole="Technika" ToRole="Komplektsh" />
-          <NavigationProperty Name="Sotrud" Relationship="Self.FK_Technika_Sotrud" FromRole="Technika" ToRole="Sotrud" />
           <NavigationProperty Name="Type_Techn" Relationship="Self.FK_Technika_Type_Techn" FromRole="Technika" ToRole="Type_Techn" />
           <NavigationProperty Name="Komplektsh1" Relationship="UchTechModel.FK_Komplektsh_Technika1" FromRole="Technika" ToRole="Komplektsh" />
           <Property Name="id_status" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Status" Relationship="UchTechModel.FK_Technika_Status" FromRole="Technika" ToRole="Status" />
+          <NavigationProperty Name="Sotrud1" Relationship="UchTechModel.FK_Technika_Sotrud1" FromRole="Technika" ToRole="Sotrud" />
+          <NavigationProperty Name="Status1" Relationship="UchTechModel.FK_Technika_Status1" FromRole="Technika" ToRole="Status" />
         </EntityType>
         <EntityType Name="Type_Techn">
           <Key>
@@ -230,45 +226,9 @@
             <PropertyRef Name="id_type_komplekt" />
           </Key>
           <Property Name="id_type_komplekt" Type="Int32" Nullable="false" />
-          <Property Name="name_type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="name_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Komplektsh" Relationship="UchTechModel.FK_Komplektsh_Type_Komplekt" FromRole="Type_Komplekt" ToRole="Komplektsh" />
         </EntityType>
-        <Association Name="FK_Komplektsh_Status">
-          <End Role="Status" Type="Self.Status" Multiplicity="1" />
-          <End Role="Komplektsh" Type="Self.Komplektsh" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Status">
-              <PropertyRef Name="id_status" />
-            </Principal>
-            <Dependent Role="Komplektsh">
-              <PropertyRef Name="id_kompl" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Komplektsh_Technika">
-          <End Role="Technika" Type="Self.Technika" Multiplicity="1" />
-          <End Role="Komplektsh" Type="Self.Komplektsh" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Technika">
-              <PropertyRef Name="id_techn" />
-            </Principal>
-            <Dependent Role="Komplektsh">
-              <PropertyRef Name="id_kompl" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Technika_Sotrud">
-          <End Role="Sotrud" Type="Self.Sotrud" Multiplicity="1" />
-          <End Role="Technika" Type="Self.Technika" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Sotrud">
-              <PropertyRef Name="id_sotr" />
-            </Principal>
-            <Dependent Role="Technika">
-              <PropertyRef Name="id_techn" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Technika_Type_Techn">
           <End Role="Type_Techn" Type="Self.Type_Techn" Multiplicity="1" />
           <End Role="Technika" Type="Self.Technika" Multiplicity="*" />
@@ -288,18 +248,6 @@
           <EntitySet Name="Technika" EntityType="Self.Technika" />
           <EntitySet Name="Type_Techn" EntityType="Self.Type_Techn" />
           <EntitySet Name="Type_Komplekt" EntityType="Self.Type_Komplekt" />
-          <AssociationSet Name="FK_Komplektsh_Status" Association="Self.FK_Komplektsh_Status">
-            <End Role="Status" EntitySet="Status" />
-            <End Role="Komplektsh" EntitySet="Komplektsh" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Komplektsh_Technika" Association="Self.FK_Komplektsh_Technika">
-            <End Role="Technika" EntitySet="Technika" />
-            <End Role="Komplektsh" EntitySet="Komplektsh" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Technika_Sotrud" Association="Self.FK_Technika_Sotrud">
-            <End Role="Sotrud" EntitySet="Sotrud" />
-            <End Role="Technika" EntitySet="Technika" />
-          </AssociationSet>
           <AssociationSet Name="FK_Technika_Type_Techn" Association="Self.FK_Technika_Type_Techn">
             <End Role="Type_Techn" EntitySet="Type_Techn" />
             <End Role="Technika" EntitySet="Technika" />
@@ -316,7 +264,11 @@
             <End Role="Type_Komplekt" EntitySet="Type_Komplekt" />
             <End Role="Komplektsh" EntitySet="Komplektsh" />
           </AssociationSet>
-          <AssociationSet Name="FK_Technika_Status" Association="UchTechModel.FK_Technika_Status">
+          <AssociationSet Name="FK_Technika_Sotrud1" Association="UchTechModel.FK_Technika_Sotrud1">
+            <End Role="Sotrud" EntitySet="Sotrud" />
+            <End Role="Technika" EntitySet="Technika" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Technika_Status1" Association="UchTechModel.FK_Technika_Status1">
             <End Role="Status" EntitySet="Status" />
             <End Role="Technika" EntitySet="Technika" />
           </AssociationSet>
@@ -357,15 +309,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Technika_Status">
+        <Association Name="FK_Technika_Sotrud1">
+          <End Type="UchTechModel.Sotrud" Role="Sotrud" Multiplicity="0..1" />
+          <End Type="UchTechModel.Technika" Role="Technika" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrud">
+              <PropertyRef Name="id_sotr" />
+            </Principal>
+            <Dependent Role="Technika">
+              <PropertyRef Name="id_sotrud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Technika_Status1">
           <End Type="UchTechModel.Status" Role="Status" Multiplicity="1" />
-          <End Type="UchTechModel.Technika" Role="Technika" Multiplicity="0..1" />
+          <End Type="UchTechModel.Technika" Role="Technika" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Status">
               <PropertyRef Name="id_status" />
             </Principal>
             <Dependent Role="Technika">
-              <PropertyRef Name="id_techn" />
+              <PropertyRef Name="id_status" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

@@ -38,5 +38,10 @@ namespace Kursprj2
         {
             FrameNav.MF_EX.Navigate(new SotrPage());
         }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            FrameNav.MF_EX.Navigate(new KomplektsPage());
+        }
     }
 }

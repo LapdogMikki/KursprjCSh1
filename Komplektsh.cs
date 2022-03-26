@@ -21,8 +21,6 @@ namespace Kursprj2
         public int id_status { get; set; }
         public Nullable<int> id_pc { get; set; }
     
-        public virtual Status Status { get; set; }
-        public virtual Technika Technika { get; set; }
         public virtual Status Status1 { get; set; }
         public virtual Technika Technika1 { get; set; }
         public virtual Type_Komplekt Type_Komplekt1 { get; set; }

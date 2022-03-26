@@ -27,11 +27,10 @@ namespace Kursprj2
         public Nullable<int> id_sotrud { get; set; }
         public int id_status { get; set; }
     
-        public virtual Komplektsh Komplektsh { get; set; }
-        public virtual Sotrud Sotrud { get; set; }
         public virtual Type_Techn Type_Techn { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Komplektsh> Komplektsh1 { get; set; }
-        public virtual Status Status { get; set; }
+        public virtual Sotrud Sotrud1 { get; set; }
+        public virtual Status Status1 { get; set; }
     }
 }
