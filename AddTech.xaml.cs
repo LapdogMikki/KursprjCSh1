@@ -28,7 +28,7 @@ namespace Kursprj2
             DataContext = _currentTechnika;
             InitializeComponent();
             Queres quere = new Queres();
-            quere.CBox_Status(StatusBox);
+            quere.CBox_Status1(StatusBox);
             quere.CBox_TTech(TypesCBox);
             quere.CBox_Usvers(UserBox);
         }
@@ -59,6 +59,11 @@ namespace Kursprj2
                 MessageBox.Show(ex.Message.ToString());
             }
 
+        }
+
+        private void CansBut_Click(object sender, RoutedEventArgs e)
+        {
+            FrameNav.MF_EX.GoBack();
         }
     }
 }

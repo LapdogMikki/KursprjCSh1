@@ -29,7 +29,7 @@ namespace Kursprj2
             DataContext = _currentKomplektsh;
             Queres query = new Queres();
             query.CBox_Query(CompBox);
-            query.CBox_Status(StatusBox);
+            query.CBox_Status2(StatusBox);
             query.CBox_TKom(TypesCBox);
 
         }

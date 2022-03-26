@@ -22,7 +22,7 @@ namespace Kursprj2
             }
         }
 
-        public void CBox_Status(ComboBox CBox)
+        public void CBox_Status1(ComboBox CBox)
         {
             using (var context = new UchTechEntities())
             {
@@ -31,6 +31,17 @@ namespace Kursprj2
                 var kgm = pcs.ToList();
                     CBox.ItemsSource=kgm;
       
+            }
+        }
+        public void CBox_Status2(ComboBox CBox)
+        {
+            using (var context = new UchTechEntities())
+            {
+                var pcs = from techs in context.Status
+                          select techs.status1;
+                var kgm = pcs.ToList();
+                CBox.ItemsSource = kgm;
+
             }
         }
         public void CBox_TTech(ComboBox CBox)
