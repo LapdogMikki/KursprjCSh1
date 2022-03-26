@@ -42,7 +42,7 @@ namespace Kursprj2
         {
             var RemoveK = KomplektGrid.SelectedItems.Cast<Komplektsh>().ToList();
             if (MessageBox.Show($"Вы точно хотите удалить следующие {RemoveK.Count()}записей?", "Внимание",
-                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes) ;
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             { try
                 {
                     UchTechEntities.GetContext().Komplektsh.RemoveRange(RemoveK);

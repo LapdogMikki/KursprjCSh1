@@ -52,5 +52,24 @@ namespace Kursprj2
         {
             FrameNav.MF_EX.Navigate(new AddTech((sender as Button).DataContext as Technika));
         }
+
+        private void DelButtTech_Click(object sender, RoutedEventArgs e)
+        {
+            var RemoveK = TechGrid.SelectedItems.Cast<Technika>().ToList();
+            if (MessageBox.Show($"Вы точно хотите удалить следующие {RemoveK.Count()}записей?", "Внимание",
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    UchTechEntities.GetContext().Technika.RemoveRange(RemoveK);
+                    UchTechEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Данные удалены");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+            }
+        }
     }
 }

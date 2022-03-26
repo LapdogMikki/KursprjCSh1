@@ -44,8 +44,8 @@
                 </TransformGroup>
             </DataGrid.RenderTransform>
         </DataGrid>
-        <Button x:Name="AddButtSotr" Grid.ColumnSpan="2" Content="Добавить" Margin="10,23,0,10" Click="AddButtSotr_Click" Grid.Row="2" HorizontalAlignment="Left" Width="76"/>
-        <Button x:Name="DelButtSotr" Content="Удалить" Margin="0,23,10,10" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Right" Width="76"/>
+        <Button x:Name="AddButtSotr" Grid.ColumnSpan="2" Content="Добавить" Margin="10,23,0,0" Click="AddButtSotr_Click" Grid.Row="2" HorizontalAlignment="Left" Width="76" Height="59" VerticalAlignment="Top"/>
+        <Button x:Name="DelButtSotr" Content="Удалить" Margin="0,23,10,10" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Right" Width="76" Click="DelButtSotr_Click"/>
 
     </Grid>
 </Page>

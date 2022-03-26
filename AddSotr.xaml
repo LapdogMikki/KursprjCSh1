@@ -28,8 +28,8 @@
         <Label Grid.ColumnSpan="3" Content="Должность" Margin="10,23,406,6" FontSize="24" Grid.Row="3"/>
         <Label Grid.ColumnSpan="3" Content="Телефон" Margin="10,9,406,10" FontSize="24" Grid.Row="4"/>
         <TextBox x:Name="NameBox" Margin="27.188,30,10,13" TextWrapping="Wrap" FontSize="24" Grid.Row="2" Grid.Column="2" Text="{Binding FIO}"/>
-        <Button x:Name="SaveBut" Grid.ColumnSpan="2" Content="Сохранить" HorizontalAlignment="Left" Margin="10,17,0,0" Width="130" FontSize="18" Height="66" VerticalAlignment="Top" Grid.Row="5"/>
-        <Button x:Name="CansBut" Content="Отменить" Margin="266.188,17,10,0" FontSize="18" Height="63" VerticalAlignment="Top" Grid.Row="5" Grid.Column="2"/>
+        <Button x:Name="SaveBut" Grid.ColumnSpan="2" Content="Сохранить" HorizontalAlignment="Left" Margin="10,17,0,0" Width="130" FontSize="18" Height="66" VerticalAlignment="Top" Grid.Row="5" Click="SaveBut_Click"/>
+        <Button x:Name="CansBut" Content="Отменить" Margin="266.188,17,10,0" FontSize="18" Height="63" VerticalAlignment="Top" Grid.Row="5" Grid.Column="2" Click="CansBut_Click"/>
         <TextBox x:Name="DolzhBox" Margin="27.188,23,10,26" TextWrapping="Wrap" FontSize="24" Grid.Row="3" Grid.Column="2" Text="{Binding dolzh}"/>
         <TextBox x:Name="PhoneBox" Margin="27.188,9,15,30" TextWrapping="Wrap" FontSize="24" Grid.Row="4" Grid.Column="2" Text="{Binding phone}"/>
 

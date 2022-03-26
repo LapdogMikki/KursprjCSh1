@@ -32,5 +32,33 @@ namespace Kursprj2
             quere.CBox_TTech(TypesCBox);
             quere.CBox_Usvers(UserBox);
         }
+
+        private void SaveBut_Click(object sender, RoutedEventArgs e)
+        {
+            StringBuilder errors = new StringBuilder();
+            if (string.IsNullOrWhiteSpace(_currentTechnika.name))
+            {
+                errors.AppendLine("Введите название");
+            }
+            if (errors.Length > 0)
+            {
+                MessageBox.Show(errors.ToString());
+                return;
+            }
+            if (_currentTechnika.id_techn == 0)
+            {
+                UchTechEntities.GetContext().Technika.Add(_currentTechnika);
+            }
+            try
+            {
+                UchTechEntities.GetContext().SaveChanges();
+                MessageBox.Show("Информация сохранена");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+
+        }
     }
 }
