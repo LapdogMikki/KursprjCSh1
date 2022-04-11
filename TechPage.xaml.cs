@@ -29,18 +29,25 @@ namespace Kursprj2
 
         private void QueryButton_Click(object sender, RoutedEventArgs e)
         {
-            var cl1 = TechGrid.SelectedCells[1];
-            string tp = cl1.Column.GetCellContent(cl1.Item).ToString();
+            int selectedColumn = 0;
+            var selectedCell = TechGrid.SelectedCells[selectedColumn];
+            var cellContent = selectedCell.Column.GetCellContent(selectedCell.Item);
+            string tp = (cellContent as TextBlock).Text.ToString();
             FrameNav.MF_EX.Navigate(new KomplQueryPage(tp));
         }
 
         private void TechGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var cl1 = TechGrid.SelectedCells[1];
-            string tp = cl1.Column.GetCellContent(cl1.Item).ToString();
-            if (tp == "Компьютер")
+            int selectedColumn = 1;
+            var selectedCell = TechGrid.SelectedCells[selectedColumn];
+            var cellContent = selectedCell.Column.GetCellContent(selectedCell.Item);
+            string txt = (cellContent as TextBlock).Text.ToString();
+            if (txt == "Компьютер")
+            {
                 QueryButton.Visibility = Visibility.Visible;
+            }
             else QueryButton.Visibility = Visibility.Hidden;
+            
             
         }
 

@@ -40,6 +40,7 @@
                 <DataGridTextColumn Header="Название" Binding="{Binding name_komplekt}"/>
                 <DataGridTextColumn Binding="{Binding Type_Komplekt1.name_type}" Header="Тип"/>
                 <DataGridTextColumn Header="Характеристика" Binding="{Binding characterist}"/>
+                <DataGridTextColumn Header="Компьютер" Binding="{Binding Technika1.name}"/>
                 <DataGridTextColumn Binding="{Binding Status1.status1}" Header="Статус"/>
                 <DataGridTemplateColumn Width="auto">
                     <DataGridTemplateColumn.CellTemplate>

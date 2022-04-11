@@ -37,7 +37,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="QueryButton" Content="Показать связанные комплектующие" Margin="42,0,32,10" Grid.Row="2" Grid.Column="2" Click="QueryButton_Click" Height="57" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5"/>
+        <Button x:Name="QueryButton" Content="Показать связанные комплектующие" Margin="37,46,37,12" Grid.Row="2" Grid.Column="2" Click="QueryButton_Click" RenderTransformOrigin="0.5,0.5"/>
         <Button x:Name="AddButtTech" Grid.ColumnSpan="2" Content="Добавить" Margin="10,46,0,10" Click="AddButtTech_Click" Grid.Row="2" HorizontalAlignment="Left" Width="76"/>
         <Button x:Name="DelButtTech" Content="Удалить" Margin="0,46,10,10" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Right" Width="76" Click="DelButtTech_Click"/>
     </Grid>
