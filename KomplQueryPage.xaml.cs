@@ -20,24 +20,12 @@ namespace Kursprj2
     /// </summary>
     public partial class KomplQueryPage : Page
     {
-        public KomplQueryPage(string dateq)
+        private Komplektsh _queryKomplektsh = new Komplektsh();
+        public KomplQueryPage(int qt)
         {
             InitializeComponent();
-            Queres query = new Queres();
-            using (var context = new UchTechEntities())
-            {
-                var txt = from pcs in context.Technika
-                          where pcs.name == dateq
-                          select pcs;
-                var ids = txt.ToList();
-                var quere = from que in context.Komplektsh
-                            from kvs in ids
-                            where que.id_pc == kvs.id_techn
-                            select new { que.name_komplekt, que.Type_Komplekt1.name_type, que.Status1.status1, que.Technika1.name };
-                var qds = quere.ToList();
-                
-
-            }
+            var qrt = UchTechEntities.GetContext().Komplektsh.Where(p => p.id_pc == qt);
+            KomplektQueryGrid.ItemsSource = qrt.ToList();      
         }
 
         private void ButBack_Click(object sender, RoutedEventArgs e)

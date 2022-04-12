@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="af02374f7d1d4a81a94ab2ff873a0c0f" Name="Diagram1" ZoomLevel="66">
+      <Diagram DiagramId="af02374f7d1d4a81a94ab2ff873a0c0f" Name="Diagram1" ZoomLevel="98">
         <EntityTypeShape EntityType="UchTechModel.Komplektsh" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="UchTechModel.Sotrud" Width="1.5" PointX="4.125" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="UchTechModel.Status" Width="1.5" PointX="0.5" PointY="1.375" IsExpanded="true" />

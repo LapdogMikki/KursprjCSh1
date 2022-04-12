@@ -99,6 +99,28 @@ namespace Kursprj2
                 return id_s[0];
             }
         }
+        public int Add_TPTechn(ComboBox CBox)
+        {
+            using (var context = new UchTechEntities())
+            {
+                var selid = from tkomp in context.Type_Techn
+                            where tkomp.name_type == CBox.SelectedItem.ToString()
+                            select tkomp.id_type_techn;
+                var id_s = selid.ToArray();
+                return id_s[0];
+            }
+        }
+        public int Add_TPUser(ComboBox CBox)
+        {
+            using (var context = new UchTechEntities())
+            {
+                var selid = from tus in context.Sotrud
+                            where tus.FIO == CBox.SelectedItem.ToString()
+                            select tus.id_sotr;
+                var id_s = selid.ToArray();
+                return id_s[0];
+            }
+        }
         public int Add_TPC(ComboBox CBox)
         {
             using (var context = new UchTechEntities())
@@ -110,7 +132,17 @@ namespace Kursprj2
                 return id_s[0];
             }
         }
-        
+        public int Table_Query(string txquery)
+        {
+            using (var context = new UchTechEntities())
+            {
+                var txt = from pcs in context.Technika
+                          where pcs.name == txquery
+                          select pcs.id_techn;
+                var ids = txt.ToList();
+                return ids[0];
+            }
+        }
            
     }
 }

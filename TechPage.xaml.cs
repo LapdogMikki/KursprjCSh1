@@ -29,11 +29,13 @@ namespace Kursprj2
 
         private void QueryButton_Click(object sender, RoutedEventArgs e)
         {
+            Queres quer = new Queres();
             int selectedColumn = 0;
             var selectedCell = TechGrid.SelectedCells[selectedColumn];
             var cellContent = selectedCell.Column.GetCellContent(selectedCell.Item);
             string tp = (cellContent as TextBlock).Text.ToString();
-            FrameNav.MF_EX.Navigate(new KomplQueryPage(tp));
+            int idt = quer.Table_Query(tp);
+            FrameNav.MF_EX.Navigate(new KomplQueryPage(idt));
         }
 
         private void TechGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
