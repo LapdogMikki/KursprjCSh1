@@ -23,8 +23,9 @@ namespace Kursprj2
         private Technika _currentTechnika = new Technika();
         public AddTech(Technika selectedTech)
         {
+            InitializeComponent();
             Queres quere = new Queres();
-            quere.CBox_Status1(StatusBox);
+            quere.CBox_Status2(StatusBox);
             Dictionary<int, string> stts = new Dictionary<int, string>();
             for (int i = 0; i < StatusBox.Items.Count; i++)
             {
@@ -42,9 +43,9 @@ namespace Kursprj2
             {
                 ccs.Add(i, UserBox.Items[i].ToString());
             }
-            if (selectedTech != null)
+            if (selectedTech != null) { 
                 _currentTechnika= selectedTech;
-            if (_currentTechnika.Sotrud1.FIO != null)
+                if (_currentTechnika.Sotrud1.FIO != null)
                 for (int i = 0; i < UserBox.Items.Count; i++)
                 {
                     if (ccs[i] == _currentTechnika.Sotrud1.FIO)
@@ -65,9 +66,10 @@ namespace Kursprj2
                         if (tps[i] == _currentTechnika.Type_Techn.name_type)
                             TypesCBox.SelectedIndex = i;
                     }
+                }
             }
             DataContext = _currentTechnika;
-            InitializeComponent();
+            
             
 
         }

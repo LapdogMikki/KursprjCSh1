@@ -29,8 +29,7 @@ namespace Kursprj2
                 var pcs = from techs in context.Status
                           select techs.status1;
                 var kgm = pcs.ToList();
-                    CBox.ItemsSource=kgm;
-      
+                CBox.ItemsSource=kgm;     
             }
         }
         public void CBox_Status2(ComboBox CBox)
@@ -41,7 +40,6 @@ namespace Kursprj2
                           select techs.status1;
                 var kgm = pcs.ToList();
                 CBox.ItemsSource = kgm;
-
             }
         }
         public void CBox_TTech(ComboBox CBox)
