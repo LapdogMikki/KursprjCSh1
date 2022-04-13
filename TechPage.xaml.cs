@@ -54,7 +54,7 @@ namespace Kursprj2
         private void DelButtTech_Click(object sender, RoutedEventArgs e)
         {
             var RemoveK = TechGrid.SelectedItems.Cast<Technika>().ToList();
-            if (MessageBox.Show($"Вы точно хотите удалить следующие {RemoveK.Count()}записей?", "Внимание",
+            if (MessageBox.Show($"Вы точно хотите удалить следующие {RemoveK.Count()} записей?", "Внимание",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try

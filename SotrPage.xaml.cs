@@ -38,7 +38,7 @@ namespace Kursprj2
         private void DelButtSotr_Click(object sender, RoutedEventArgs e)
         {
             var RemoveK = SotrGrid.SelectedItems.Cast<Sotrud>().ToList();
-            if (MessageBox.Show($"Вы точно хотите удалить следующие {RemoveK.Count()}записей?", "Внимание",
+            if (MessageBox.Show($"Вы точно хотите удалить следующие {RemoveK.Count()} записей?", "Внимание",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
