@@ -23,6 +23,8 @@ namespace Kursprj2
         public TechPage()
         {
             InitializeComponent();
+           
+            TechGrid.ItemsSource = UchTechEntities.GetContext().Technika.AsNoTracking().ToList();
             TechGrid.ItemsSource = UchTechEntities.GetContext().Technika.ToList();
             QueryButton.Visibility = Visibility.Hidden;
         }
@@ -38,20 +40,7 @@ namespace Kursprj2
             FrameNav.MF_EX.Navigate(new KomplQueryPage(idt));
         }
 
-        private void TechGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            int selectedColumn = 1;
-            var selectedCell = TechGrid.SelectedCells[selectedColumn];
-            var cellContent = selectedCell.Column.GetCellContent(selectedCell.Item);
-            string txt = (cellContent as TextBlock).Text.ToString();
-            if (txt == "Компьютер")
-            {
-                QueryButton.Visibility = Visibility.Visible;
-            }
-            else QueryButton.Visibility = Visibility.Hidden;
-            
-            
-        }
+   
 
         private void AddButtTech_Click(object sender, RoutedEventArgs e)
         {
@@ -73,12 +62,26 @@ namespace Kursprj2
                     UchTechEntities.GetContext().Technika.RemoveRange(RemoveK);
                     UchTechEntities.GetContext().SaveChanges();
                     MessageBox.Show("Данные удалены");
+                    TechGrid.ItemsSource = UchTechEntities.GetContext().Technika.ToList();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message.ToString());
                 }
             }
+        }
+
+        private void TechGrid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            int selectedColumn = 1;
+            var selectedCell = TechGrid.SelectedCells[selectedColumn];
+            var cellContent = selectedCell.Column.GetCellContent(selectedCell.Item);
+            string txt = (cellContent as TextBlock).Text.ToString();
+            if (txt == "Компьютер")
+            {
+                QueryButton.Visibility = Visibility.Visible;
+            }
+            else QueryButton.Visibility = Visibility.Hidden;
         }
     }
 }

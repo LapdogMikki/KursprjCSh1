@@ -51,6 +51,7 @@ namespace Kursprj2
                     {
                         if (pcs[i] == _currentKomplektsh.Technika1.name)
                             CompBox.SelectedIndex = i;
+                        else CompBox.SelectedIndex = -1;
                     }
                 if (_currentKomplektsh.Status1.status1 != null)
                 {
@@ -58,6 +59,7 @@ namespace Kursprj2
                     {
                         if (stts[i] == _currentKomplektsh.Status1.status1)
                             StatusBox.SelectedIndex = i;
+                        else StatusBox.SelectedIndex = -1;
                     }
                 }
                 if (_currentKomplektsh.Type_Komplekt1.name_type != null)
@@ -66,8 +68,10 @@ namespace Kursprj2
                     {
                         if (tps[i] == _currentKomplektsh.Type_Komplekt1.name_type)
                             TypesCBox.SelectedIndex = i;
+                        else TypesCBox.SelectedIndex = -1;
                     }
                 }
+
             }
             DataContext = _currentKomplektsh;
             

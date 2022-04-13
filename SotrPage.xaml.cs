@@ -46,6 +46,7 @@ namespace Kursprj2
                     UchTechEntities.GetContext().Sotrud.RemoveRange(RemoveK);
                     UchTechEntities.GetContext().SaveChanges();
                     MessageBox.Show("Данные удалены");
+                    SotrGrid.ItemsSource = UchTechEntities.GetContext().Sotrud.ToList();
                 }
                 catch (Exception ex)
                 {

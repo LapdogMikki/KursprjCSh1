@@ -23,6 +23,7 @@ namespace Kursprj2
         public KomplektsPage()
         {
             InitializeComponent();
+            KomplektGrid.ItemsSource = UchTechEntities.GetContext().Komplektsh.AsNoTracking().ToList();
             KomplektGrid.ItemsSource = UchTechEntities.GetContext().Komplektsh.ToList();
         }
 
@@ -48,6 +49,7 @@ namespace Kursprj2
                     UchTechEntities.GetContext().Komplektsh.RemoveRange(RemoveK);
                     UchTechEntities.GetContext().SaveChanges();
                     MessageBox.Show("Данные удалены");
+                    KomplektGrid.ItemsSource = UchTechEntities.GetContext().Komplektsh.ToList();
                 }
                 catch (Exception ex)
                 {

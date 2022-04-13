@@ -50,13 +50,15 @@ namespace Kursprj2
                 {
                     if (ccs[i] == _currentTechnika.Sotrud1.FIO)
                         UserBox.SelectedIndex = i;
-                }
+                    else UserBox.SelectedIndex = -1;
+                    }
                 if (_currentTechnika.Status1.status1 != null)
                 {
                     for (int i = 0; i < StatusBox.Items.Count; i++)
                     {
                         if (stts[i] == _currentTechnika.Status1.status1)
                             StatusBox.SelectedIndex = i;
+                        else StatusBox.SelectedIndex = -1;
                     }
                 }
                 if (_currentTechnika.Type_Techn.name_type != null)
@@ -65,6 +67,7 @@ namespace Kursprj2
                     {
                         if (tps[i] == _currentTechnika.Type_Techn.name_type)
                             TypesCBox.SelectedIndex = i;
+                        else TypesCBox.SelectedIndex = -1;
                     }
                 }
             }

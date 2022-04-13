@@ -34,7 +34,7 @@ namespace Kursprj2
             StringBuilder errors = new StringBuilder();
             if (string.IsNullOrWhiteSpace(_currentSotrud.FIO))
             {
-                errors.AppendLine("Введите название");
+                errors.AppendLine("Введите ФИО");
             }
             if (string.IsNullOrWhiteSpace(_currentSotrud.dolzh))
             {

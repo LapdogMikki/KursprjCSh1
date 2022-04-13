@@ -21,7 +21,7 @@
             <ColumnDefinition Width="130*"/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="TechGrid" Margin="8,7,8,0" Grid.ColumnSpan="4" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="TechGrid_SelectionChanged">
+        <DataGrid x:Name="TechGrid" Margin="8,7,8,0" Grid.ColumnSpan="4" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" MouseLeftButtonDown="TechGrid_MouseLeftButtonDown">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название" Binding="{Binding name}"/>
                 <DataGridTextColumn Binding="{Binding Type_Techn.name_type}" Header="Тип"/>
